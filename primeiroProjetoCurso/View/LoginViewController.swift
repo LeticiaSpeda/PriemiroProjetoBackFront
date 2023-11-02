@@ -32,15 +32,31 @@ final class LoginViewController: UIViewController, ViewCode {
         return textField
     }()
 
+    private lazy var loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Login", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .magenta.withAlphaComponent(0.6)
+        button.layer.cornerRadius = 10
+        button.enableViewCode()
+        button.addTarget(self, action: #selector(tappedLoginButton), for: .touchUpInside)
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
+    }
+
+    @objc func tappedLoginButton() {
+
     }
 
     func setupHierarchy() {
         view.addSubview(welcomeLabel)
         view.addSubview(nameTextField)
         view.addSubview(passwordTextField)
+        view.addSubview(loginButton)
     }
 
     func setupConstraints() {
@@ -60,6 +76,11 @@ final class LoginViewController: UIViewController, ViewCode {
             passwordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             passwordTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             passwordTextField.heightAnchor.constraint(equalToConstant: 30),
+
+            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 16),
+            loginButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            loginButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            loginButton.heightAnchor.constraint(equalToConstant: 30),
 
         ])
     }
