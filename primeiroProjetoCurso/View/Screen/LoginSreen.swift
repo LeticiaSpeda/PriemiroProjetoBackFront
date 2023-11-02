@@ -76,25 +76,38 @@ final class LoginSreen: UIView, ViewCode {
     }
 
     func setupConstraints() {
+        setupWelcomeConstraints()
+        setupemailTextFieldConstraints()
+        setupPasswordTextFieldConstraints()
+        setupLoginButtonConstraints()
+    }
+
+    func setupWelcomeConstraints() {
         welcomeLabel.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(16)
             make.centerX.equalTo(snp.centerX)
         }
+    }
 
+    func setupemailTextFieldConstraints() {
         emailTextField.snp.makeConstraints { make in
             make.top.equalTo(welcomeLabel.snp.bottom).offset(20)
             make.leading.equalTo(safeAreaLayoutGuide.snp.leading).offset(16)
             make.trailing.equalTo(safeAreaLayoutGuide.snp.trailing).inset(16)
             make.height.equalTo(30)
         }
+    }
 
+    func setupPasswordTextFieldConstraints() {
         passwordTextField.snp.makeConstraints { make in
             make.top.equalTo(emailTextField.snp.bottom).offset(16)
             make.leading.equalTo(safeAreaLayoutGuide.snp.leading).offset(16)
             make.trailing.equalTo(safeAreaLayoutGuide.snp.trailing).inset(16)
             make.height.equalTo(30)
         }
+    }
 
+    func setupLoginButtonConstraints() {
         loginButton.snp.makeConstraints { make in
             make.top.equalTo(passwordTextField.snp.bottom).offset(16)
             make.leading.equalTo(safeAreaLayoutGuide.snp.leading).offset(16)
@@ -102,7 +115,7 @@ final class LoginSreen: UIView, ViewCode {
             make.height.equalTo(30)
         }
     }
-    
+
     func setupStyle() {
         backgroundColor = .magenta.withAlphaComponent(0.6)
     }
