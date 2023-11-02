@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 protocol LoginScreenProtocol: AnyObject {
     func tappedLoginButton()
@@ -75,29 +76,31 @@ final class LoginSreen: UIView, ViewCode {
     }
 
     func setupConstraints() {
-        NSLayoutConstraint.activate([
-            welcomeLabel.topAnchor.constraint(
-                equalTo: safeAreaLayoutGuide.topAnchor,
-                constant: 16
-            ),
-            welcomeLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+        welcomeLabel.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(16)
+            make.centerX.equalTo(snp.centerX)
+        }
 
-            emailTextField.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 20),
-            emailTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            emailTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            emailTextField.heightAnchor.constraint(equalToConstant: 30),
+        emailTextField.snp.makeConstraints { make in
+            make.top.equalTo(welcomeLabel.snp.bottom).offset(20)
+            make.leading.equalTo(safeAreaLayoutGuide.snp.leading).offset(16)
+            make.trailing.equalTo(safeAreaLayoutGuide.snp.trailing).inset(16)
+            make.height.equalTo(30)
+        }
 
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 16),
-            passwordTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            passwordTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 30),
+        passwordTextField.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).offset(16)
+            make.leading.equalTo(safeAreaLayoutGuide.snp.leading).offset(16)
+            make.trailing.equalTo(safeAreaLayoutGuide.snp.trailing).inset(16)
+            make.height.equalTo(30)
+        }
 
-            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 16),
-            loginButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            loginButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            loginButton.heightAnchor.constraint(equalToConstant: 30),
-
-        ])
+        loginButton.snp.makeConstraints { make in
+            make.top.equalTo(passwordTextField.snp.bottom).offset(16)
+            make.leading.equalTo(safeAreaLayoutGuide.snp.leading).offset(16)
+            make.trailing.equalTo(safeAreaLayoutGuide.snp.trailing).inset(16)
+            make.height.equalTo(30)
+        }
     }
     
     func setupStyle() {
@@ -109,4 +112,3 @@ final class LoginSreen: UIView, ViewCode {
         passwordTextField.delegate = delegate
     }
 }
-

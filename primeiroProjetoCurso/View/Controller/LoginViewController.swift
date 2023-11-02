@@ -1,8 +1,12 @@
-//
-//  LoginViewController.swift
-//  primeiroProjetoCurso
-//
-//  Created by Leticia Speda on 02/11/23.
-//
+import UIKit
 
-import Foundation
+final class LoginViewController: UIViewController {
+
+    private var screen = LoginSreen()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        screen = LoginSreen()
+        view = screen
+    }
+}
